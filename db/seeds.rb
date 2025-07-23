@@ -1,12 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 User.destroy_all
 
 
@@ -107,32 +98,32 @@ vesemir   = User.find_by(name: "Vesemir")
 Pet.create!([
               {
                 name: "Roach",
-                species: "Horse",
+                breed: "Horse",
                 user: geralt
               },
               {
                 name: "Lilac",
-                species: "Cat",
+                breed: "Cat",
                 user: yennefer
               },
               {
                 name: "Zireael",
-                species: "Wolf Pup",
+                breed: "Wolf Pup",
                 user: ciri
               },
               {
                 name: "Ember",
-                species: "Phoenix",
+                breed: "Phoenix",
                 user: triss
               },
               {
                 name: "Lute",
-                species: "Parrot",
+                breed: "Parrot",
                 user: dandelion
               },
               {
                 name: "Griffin",
-                species: "Wolf",
+                breed: "Wolf",
                 user: vesemir
               }
             ])
@@ -203,52 +194,53 @@ BankAccount.create!([
                         user: geralt,
                         bank: gondor_bank,
                         account_number: "123456789",
-                        card_type: "visa",
+                        expiry_date: "2029-09-01",
                         card_name: "Geralt R"
                       },
                       {
                         user: yennefer,
                         bank: mordor_bank,
                         account_number: "123456781",
-                        card_type: "visa",
+                        expiry_date: "2029-09-01",
                         card_name: "Yennefer V"
                       },
                       {
                         user: ciri,
                         bank: minas_bank,
                         account_number: "123456782",
-                        card_type: "visa",
+                        expiry_date: "2029-09-01",
                         card_name: "Ciri C"
                       },
                       {
                         user: dandelion,
                         bank: shire_bank,
                         account_number: "123456783",
-                        card_type: "visa",
+                        expiry_date: "2029-09-01",
                         card_name: "Dandelion L"
                       },
                       {
                         user: triss,
                         bank: riven_bank,
                         account_number: "123456784",
-                        card_type: "visa",
+                        expiry_date: "2029-09-01",
                         card_name: "Triss M"
                       },
                       {
                         user: vesemir,
                         bank: riven_bank,
                         account_number: "123456785",
-                        card_type: "visa",
+                        expiry_date: "2029-09-01",
                         card_name: "Vesemir O"
                       },
                     ])
+p "Created #{BankAccount.count} Bank Accounts"
 
 Appointment.destroy_all
 Appointment.create!([
                       {
                         date: "2025-03-20",
                         user: geralt,
-                        doctor: saruman
+                        doctor: arwen
                       },
                       {
                         date: "2025-04-25",
@@ -258,12 +250,12 @@ Appointment.create!([
                       {
                         date: "2025-06-20",
                         user: ciri,
-                        doctor: gladriel
+                        doctor: arwen
                       },
                       {
                         date: "2025-03-15",
                         user: triss,
-                        doctor: elrond
+                        doctor: arwen
                       },
                       {
                         date: "2025-07-05",
@@ -273,7 +265,7 @@ Appointment.create!([
                       {
                         date: "2025-09-13",
                         user: yennefer,
-                        doctor: gandalf
+                        doctor: arwen
                       }
                     ])
 p "Created #{Appointment.count} Appointments"

@@ -1,5 +1,6 @@
 class Doctor < ApplicationRecord
-  validates :name, presence: true
+  has_many :appointments, dependent: :destroy
 
-  validates :active, inclusion: { in: [ true, false ] }, default: true
+  validates :name, presence: true
+  validates :active, inclusion: { in: [ true, false ] }
 end
