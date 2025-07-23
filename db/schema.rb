@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_23_052728) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_23_053727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_23_052728) do
     t.bigint "bank_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "card_name"
+    t.datetime "expiry_date"
     t.index ["bank_id"], name: "index_bank_accounts_on_bank_id"
     t.index ["user_id"], name: "index_bank_accounts_on_user_id"
   end
@@ -60,6 +62,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_23_052728) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "breed"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
