@@ -86,7 +86,16 @@ Doctor.create!([
 
 p "Created #{Doctor.count} Doctors"
 
+elrond = Doctor.find_by(name: "Elrond Half-elven")
+gandalf = Doctor.find_by(name: "Gandalf the Grey")
+arwen = Doctor.find_by(name: "Arwen Undómiel")
+radagast = Doctor.find_by(name: "Radagast the Brown")
+gladriel = Doctor.find_by(name: "Gladriel of Lothlórien")
+saruman = Doctor.find_by(name: "Saruman the White")
+
 Pet.destroy_all
+
+
 
 geralt    = User.find_by(name: "Geralt")
 yennefer  = User.find_by(name: "Yennefer")
@@ -129,6 +138,35 @@ Pet.create!([
             ])
 p "Created #{Pet.count} Pets"
 
+Address.destroy_all
+Address.create!([
+                  {
+                    street: "123 Kaer Morhen Trail",
+                    user: geralt
+                  },
+                  {
+                    street: "42 Vengerberg Way",
+                    user: yennefer
+                  },
+                  {
+                    street: "88 Cintra Crescent",
+                    user: ciri
+                  },
+                  {
+                    street: "19 Aretuza Avenue",
+                    user: triss
+                  },
+                  {
+                    street: "7 Bard's Lane",
+                    user: dandelion
+                  },
+                  {
+                    street: "1 Wolf School Road",
+                    user: vesemir
+                  }
+                ])
+p "Created #{Address.count} Addresses"
+
 Bank.destroy_all
 Bank.create!([
                {
@@ -151,3 +189,38 @@ Bank.create!([
                }
              ])
 p "Created #{Bank.count} Banks"
+
+Appointment.destroy_all
+Appointment.create!([
+                      {
+                        date: "2025-03-20",
+                        user: geralt,
+                        doctor: saruman
+                      },
+                      {
+                        date: "2025-04-25",
+                        user: yennefer,
+                        doctor: arwen
+                      },
+                      {
+                        date: "2025-06-20",
+                        user: ciri,
+                        doctor: gladriel
+                      },
+                      {
+                        date: "2025-03-15",
+                        user: triss,
+                        doctor: elrond
+                      },
+                      {
+                        date: "2025-07-05",
+                        user: vesemir,
+                        doctor: arwen
+                      },
+                      {
+                        date: "2025-09-13",
+                        user: yennefer,
+                        doctor: gandalf
+                      }
+                    ])
+p "Created #{Appointment.count} Appointments"
