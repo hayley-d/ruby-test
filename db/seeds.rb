@@ -84,6 +84,8 @@ Doctor.create!([
                  }
                ])
 
+p "Created #{Doctor.count} Doctors"
+
 Pet.destroy_all
 
 geralt    = User.find_by(name: "Geralt")
@@ -125,3 +127,27 @@ Pet.create!([
                 user: vesemir
               }
             ])
+p "Created #{Pet.count} Pets"
+
+Bank.destroy_all
+Bank.create!([
+               {
+                 name: "Bank of Gondor"
+               },
+               {
+                 name: "Shire Savings & Loan"
+               },
+               {
+                 name: "Mordor Vaults"
+               },
+               {
+                 name: "Rivendell Credit Union"
+               },
+               {
+                 name: "Minas Tirith Treasury"
+               },
+               {
+                 name: "Erebor Gold Reserve"
+               }
+             ])
+p "Created #{Bank.count} Banks"
