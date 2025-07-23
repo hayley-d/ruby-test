@@ -190,6 +190,59 @@ Bank.create!([
              ])
 p "Created #{Bank.count} Banks"
 
+gondor_bank = Bank.find_by(name: "Bank of Gondor")
+shire_bank = Bank.find_by(name: "Shire Savings & Loan")
+mordor_bank = Bank.find_by(name: "Mordor Vaults")
+riven_bank = Bank.find_by(name: "Rivendell Credit Union")
+minas_bank   = Bank.find_by(name: "Minas Tirith Treasury")
+erebor_bank = Bank.find_by(name: "Erebor Credit Union")
+
+BankAccount.destroy_all
+BankAccount.create!([
+                      {
+                        user: geralt,
+                        bank: gondor_bank,
+                        account_number: "123456789",
+                        card_type: "visa",
+                        card_name: "Geralt R"
+                      },
+                      {
+                        user: yennefer,
+                        bank: mordor_bank,
+                        account_number: "123456781",
+                        card_type: "visa",
+                        card_name: "Yennefer V"
+                      },
+                      {
+                        user: ciri,
+                        bank: minas_bank,
+                        account_number: "123456782",
+                        card_type: "visa",
+                        card_name: "Ciri C"
+                      },
+                      {
+                        user: dandelion,
+                        bank: shire_bank,
+                        account_number: "123456783",
+                        card_type: "visa",
+                        card_name: "Dandelion L"
+                      },
+                      {
+                        user: triss,
+                        bank: riven_bank,
+                        account_number: "123456784",
+                        card_type: "visa",
+                        card_name: "Triss M"
+                      },
+                      {
+                        user: vesemir,
+                        bank: riven_bank,
+                        account_number: "123456785",
+                        card_type: "visa",
+                        card_name: "Vesemir O"
+                      },
+                    ])
+
 Appointment.destroy_all
 Appointment.create!([
                       {
