@@ -57,7 +57,32 @@ User.create!([
 p "Created #{User.count} Users"
 
 Doctor.destroy_all
-Doctor.create!([])
+Doctor.create!([
+                 {
+                   name: "Elrond Half-elven",
+                   active: true
+                 },
+                 {
+                   name: "Gandalf the Grey",
+                   active: true
+                 },
+                 {
+                   name: "Arwen Undómiel",
+                   active: false
+                 },
+                 {
+                   name: "Radagast the Brown",
+                   active: true
+                 },
+                 {
+                   name: "Galadriel of Lothlórien",
+                   active: false
+                 },
+                 {
+                   name: "Saruman the White",
+                   active: false
+                 }
+               ])
 
 Pet.destroy_all
 
