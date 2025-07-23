@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :appointments
+  resources :doctors
   resources :bank_accounts
   resources :banks
   resources :addresses
