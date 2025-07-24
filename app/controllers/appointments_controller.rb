@@ -8,6 +8,8 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1 or /appointments/1.json
   def show
+    appointment = Appointment.find(params[:id])
+    render json: appointment
   end
 
   # GET /appointments/new

@@ -6,6 +6,8 @@ class AddressesController < ApplicationController
   end
 
   def show
+    address = Address.find params[:id]
+    render json: address
   end
 
   def new

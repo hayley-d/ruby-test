@@ -8,6 +8,8 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/1 or /doctors/1.json
   def show
+    doctor = Doctor.find params[:id]
+    render json: doctor
   end
 
   # GET /doctors/new

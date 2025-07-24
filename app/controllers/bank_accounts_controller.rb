@@ -8,6 +8,8 @@ class BankAccountsController < ApplicationController
 
   # GET /bank_accounts/1 or /bank_accounts/1.json
   def show
+    accout = BankAccount.find params[:id]
+    render json: accout
   end
 
   # GET /bank_accounts/new
