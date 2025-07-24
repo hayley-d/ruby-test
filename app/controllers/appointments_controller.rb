@@ -1,42 +1,31 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[ show edit update destroy ]
 
-  # GET /appointments or /appointments.json
   def index
     @appointments = Appointment.all
   end
 
-  # GET /appointments/1 or /appointments/1.json
   def show
     appointment = Appointment.includes(:user, :doctor).all.find(params[:id])
     render json: appointment
   end
 
-  # GET /appointments/new
   def new
     @appointment = Appointment.new
   end
 
-  # GET /appointments/1/edit
   def edit
   end
 
-  # POST /appointments or /appointments.json
   def create
-    @appointment = Appointment.new(appointment_params)
-
-    respond_to do |format|
-      if @appointment.save
-        format.html { redirect_to @appointment, notice: "Appointment was successfully created." }
-        format.json { render :show, status: :created, location: @appointment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @appointment.errors, status: :unprocessable_entity }
-      end
-    end
+    appointment = CreateAppointmentsService.call(user_id: params[:user_id], doctor_id: params[:doctor_id])
+    render json: appointment, status: :created
+  rescue ActiveRecord::RecordNotFound => e
+    render json: e.record.errors, status: :not_found
+  rescue ActiveRecord::RecordInvalid => e
+    render json: e.record.errors, status: :unprocessible_entity
   end
 
-  # PATCH/PUT /appointments/1 or /appointments/1.json
   def update
     respond_to do |format|
       if @appointment.update(appointment_params)
@@ -49,7 +38,6 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  # DELETE /appointments/1 or /appointments/1.json
   def destroy
     @appointment.destroy!
 
