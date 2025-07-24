@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1 or /appointments/1.json
   def show
-    appointment = Appointment.find(params[:id])
+    appointment = Appointment.includes(:user, :doctor).all.find(params[:id])
     render json: appointment
   end
 

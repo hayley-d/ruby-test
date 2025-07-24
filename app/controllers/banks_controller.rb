@@ -9,7 +9,7 @@ class BanksController < ApplicationController
   # GET /banks/1 or /banks/1.json
   def show
     bank = Bank.find params[:id]
-    render json:Bank
+    render json: bank
   end
 
   # GET /banks/new

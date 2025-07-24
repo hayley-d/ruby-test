@@ -8,8 +8,8 @@ class PetsController < ApplicationController
 
   # GET /pets/1 or /pets/1.json
   def show
-    @pet = Pet.includes(:user).all.find params[:id]
-    render json: @pet
+    pet = Pet.includes(:user).all.find params[:id]
+    render json: pet
   end
 
   # GET /pets/new
