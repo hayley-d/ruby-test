@@ -1,42 +1,31 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: %i[ show edit update destroy ]
 
-  # GET /pets or /pets.json
   def index
     @pets = Pet.all
   end
 
-  # GET /pets/1 or /pets/1.json
   def show
     pet = Pet.includes(:user).all.find params[:id]
     render json: pet
   end
 
-  # GET /pets/new
   def new
     @pet = Pet.new
   end
 
-  # GET /pets/1/edit
   def edit
   end
 
-  # POST /pets or /pets.json
   def create
-    @pet = Pet.new(pet_params)
-
-    respond_to do |format|
-      if @pet.save
-        format.html { redirect_to @pet, notice: "Pet was successfully created." }
-        format.json { render :show, status: :created, location: @pet }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @pet.errors, status: :unprocessable_entity }
-      end
-    end
+    pet = CreatePetsService.call(user_id: params[:user_id])
+    render json: pet, status: :created
+  rescue ActiveRecord::RecordNotFound => e
+    render json: e.record.errors, status: :not_found
+  rescue ActiveRecord::RecordInvalid => e
+    render json: e.record.errors, status: :unprocessible_entity
   end
 
-  # PATCH/PUT /pets/1 or /pets/1.json
   def update
     respond_to do |format|
       if @pet.update(pet_params)
@@ -49,7 +38,6 @@ class PetsController < ApplicationController
     end
   end
 
-  # DELETE /pets/1 or /pets/1.json
   def destroy
     @pet.destroy!
 
