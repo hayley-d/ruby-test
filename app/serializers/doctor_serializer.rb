@@ -1,3 +1,7 @@
 class DoctorSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :available
+
+  def available
+    object.active
+  end
 end
